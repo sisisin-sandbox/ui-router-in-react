@@ -19,6 +19,12 @@ const routerStates = [
     name: 'home',
     url: '/home',
     component: Home,
+    resolve: [
+      {
+        token: 'resolvedValue',
+        resolveFn: () => Promise.resolve('resolve!'),
+      },
+    ],
   },
   {
     name: 'user',

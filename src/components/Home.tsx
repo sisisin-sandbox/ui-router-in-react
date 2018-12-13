@@ -2,7 +2,7 @@ import * as React from 'react';
 import logo from '../logo.svg';
 import './Home.css';
 
-export const Home = () => {
+export const Home = (props: any) => {
   return (
     <div className="Home">
       <header className="Home-header">
@@ -16,7 +16,7 @@ export const Home = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          {props.resolvedValue}
         </a>
       </header>
     </div>
