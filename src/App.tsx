@@ -1,25 +1,33 @@
-import { UIRouter, UIView, UISref } from '@uirouter/react';
+import { pushStateLocationPlugin, UIRouter, UIView } from '@uirouter/react';
 import React, { Component } from 'react';
-import { routerPlugins, routerStates } from './router.config';
+import { Home } from './components/Home';
+import { Menu } from './components/Menu';
+import { User } from './components/User';
+
+const routerStates = [
+  {
+    name: 'home',
+    url: '/home',
+    component: Home,
+  },
+  {
+    name: 'user',
+    url: '/users/:userId',
+    params: {
+      userId: {
+        type: 'int',
+      },
+    },
+    component: User,
+  },
+];
 
 class App extends Component {
   render() {
     return (
-      <UIRouter plugins={routerPlugins} states={routerStates}>
+      <UIRouter states={routerStates} plugins={[pushStateLocationPlugin]}>
         <>
-          <ul>
-            <li>
-              <UISref to="home">
-                <a>home</a>
-              </UISref>
-            </li>
-            <li>
-              <UISref to="user">
-                <a>user</a>
-              </UISref>
-            </li>
-          </ul>
-
+          <Menu />
           <UIView />
         </>
       </UIRouter>
