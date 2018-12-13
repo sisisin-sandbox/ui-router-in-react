@@ -1,11 +1,16 @@
 import * as React from 'react';
-import { Transition } from '@uirouter/core';
+import { UserProps } from './UserModule';
 
-export const User = ({ transition }: { transition: Transition }) => {
-  const { userId } = transition.params();
-  return (
-    <div>
-      user {userId}. typeof userId is {typeof userId}
-    </div>
-  );
-};
+export class User extends React.Component<UserProps> {
+  componentDidMount() {
+    this.props.init();
+  }
+  render() {
+    const { userId } = this.props;
+    return (
+      <div>
+        user {userId}. typeof userId is {typeof userId}
+      </div>
+    );
+  }
+}
